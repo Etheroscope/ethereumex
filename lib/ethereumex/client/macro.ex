@@ -1,4 +1,5 @@
 defmodule Ethereumex.Client.Macro do
+  import Ethereumex.Config
   alias Ethereumex.Client.{Server, Behaviour}
   @moduledoc false
 
@@ -435,7 +436,7 @@ defmodule Ethereumex.Client.Macro do
       end
 
       defp server_request(params) do
-        GenServer.call __MODULE__, {:request, params}
+        GenServer.call __MODULE__, {:request, params}, timeout()
       end
 
       def start_link do

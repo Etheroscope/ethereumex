@@ -21,6 +21,11 @@ defmodule Ethereumex.Config do
     env_var!(:port)
   end
 
+  @spec timeout() :: integer()
+  def timeout do
+    env_var!(:timeout)  
+  end
+
   @spec env_var!(atom()) :: binary() | integer()
   defp env_var!(var) do
     value = Application.fetch_env!(:ethereumex, var)
